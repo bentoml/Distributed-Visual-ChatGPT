@@ -1,0 +1,25 @@
+service: "service:svc"
+description: "file: ./README.md"
+labels:
+  owner: bentoml-team
+  stage: demo
+include:
+- "*.py"
+- "bentofile.yaml"
+- "README.md"
+- "requirements.txt"
+- "checkpoints/"
+exclude:
+- "image/"
+
+python:
+  requirements_txt: "./requirements.txt"
+docker:
+    distro: debian
+    cuda_version: "11.7.0"
+    system_packages:
+      - git
+      - ffmpeg
+      - libsm6
+      - libxext6
+    setup_script: "./docker/setup.sh"
