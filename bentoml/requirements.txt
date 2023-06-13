@@ -28,5 +28,5 @@ torchmetrics
 transformers
 webdataset
 yapf
-starlette<0.27
-bentoml==1.0.20
+starlette<0.29
+bentoml>=1.0.22
