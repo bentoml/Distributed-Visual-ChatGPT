@@ -7,9 +7,15 @@ This folder contains a quick and simple BentoML integration with TaskMatrix. We 
 Run your TaskMatrix with BentoML server locally in 3 simple steps
 
 ```bash
+# setup environment
 python -m venv venv && . venv/bin/activate && pip install -r requirements.txt
+pip install git+https://github.com/facebookresearch/segment-anything.git
+pip install  git+https://github.com/IDEA-Research/GroundingDINO.git
+
+# set your openai api key
 export OPENAI_API_KEY={your openai api key}
-# VISUALCHATGPT_LOAD has the same format of visual_chatgpt.py's --load argument
+
+# start! VISUALCHATGPT_LOAD has the same format of visual_chatgpt.py's --load argument
 VISUALCHATGPT_LOAD=Text2Box_cpu,Segmenting_cpu,ImageCaptioning_cuda:0,Text2Image_cuda:0 python start_server.py
 ```
 
@@ -57,8 +63,8 @@ To utilize GPU in docker image, install [NVIDIA Container Toolkit](https://githu
 ```
 docker run -it --rm -p 3000:3000 --gpus=all \
     --env OPENAI_API_KEY={your openai api key} \
-	--env VISUALCHATGPT_LOAD="Text2Box_cpu,Segmenting_cuda:0,ImageCaptioning_cuda:0,Text2Image_cuda:0" \
-	bentoml-visual-chatgpt:nvc7ibagj6qnkasc serve --api-workers=1
+    --env VISUALCHATGPT_LOAD="Text2Box_cpu,Segmenting_cuda:0,ImageCaptioning_cuda:0,Text2Image_cuda:0" \
+    bentoml-visual-chatgpt:nvc7ibagj6qnkasc serve --api-workers=1
 ```
 
 ## BentoCloud section?
